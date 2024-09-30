@@ -1,0 +1,33 @@
+{% extends "base_home.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Ecriture{% endblock title %}
+{% block page_title %}Passassion d'une Ecriture{% endblock page_title %}
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Formulaire d'ajout d'une Ecriture comptable</h6>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        <div class="row">
+                            <div class="col">
+                                {{ ecriture_form|crispy }}
+                            </div>
+                            <div class="col">
+                                {{ mouvement_formset.management_form }}
+                                {% for form in mouvement_formset %}
+                                    {{ form|crispy }}
+                                    <hr>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

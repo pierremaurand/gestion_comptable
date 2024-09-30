@@ -1,0 +1,9 @@
+{% extends 'base_login.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <button class="btn btn-primary btn-user btn-block" type="submit" >Se connecter</button>
+    </form>
+{% endblock content %}
